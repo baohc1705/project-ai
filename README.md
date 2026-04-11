@@ -6,7 +6,7 @@
 
 ---
 
-## Command 
+## CMD
 
 ### 1. Clone
 ```
@@ -17,7 +17,7 @@ git clone https://github.com/baohc1705/project-ai.git
 ### 2. Tạo môi trường ảo
 ```
 py -3.11 -m venv .venv
-venv\Scripts\activate
+.venv\Scripts\activate
 
 ```
 
