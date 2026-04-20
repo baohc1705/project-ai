@@ -69,11 +69,13 @@ def main():
             # 2. Điều khiển ÂM LƯỢNG (Tay PHẢI)
             if right_landmark_list:
                 right_distance = get_distance(frame, right_landmark_list)
-                vol = np.interp(right_distance, [30, 200], [minVol, maxVol])
-                volume.SetMasterVolumeLevel(vol, None)
+                
+                
+                vol_scalar = np.interp(right_distance, [30, 200], [0.0, 1.0])
+                volume.SetMasterVolumeLevelScalar(vol_scalar, None)
 
-                volBar = np.interp(right_distance, [30, 200], [0, 100])
-                cv2.putText(frame, f'Volume: {int(volBar)}%', (10, 100),
+                volBar = int(vol_scalar * 100)
+                cv2.putText(frame, f'Volume: {volBar}%', (10, 100),
                             cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
 
             cv2.imshow('Control System (Press Q to quit)', frame)
